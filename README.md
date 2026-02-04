@@ -31,9 +31,9 @@ No incluye:
 Tecnologías utilizadas
 
 *  Lenguaje: Python
-*  Base de datos: MariaDB
+*  Base de datos: MySQL
 *  Mensajería: Telegram Bot API
-*  Infraestructura: Google Cloud Platform (GCP)
+*  Infraestructura: Railway
 *  Control de versiones: GitHub
 
 Estructura del proyecto
