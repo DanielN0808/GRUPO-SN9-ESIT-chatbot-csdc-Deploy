@@ -195,7 +195,7 @@ with st.sidebar:
 # ---------------------------------------------------------
     # BOTÓN TELEGRAM: Minimalista (Solo Color Oficial)
     # ---------------------------------------------------------
-    telegram_url = "https://web.telegram.org/k/#@CSDC_ASSISTANT_BOT"
+    telegram_url = "https://web.telegram.org/k/#@CSDC_Chatbot_ESITbot"
 
     st.markdown(f"""
     <a href="{telegram_url}" target="_blank" style="text-decoration: none;">
