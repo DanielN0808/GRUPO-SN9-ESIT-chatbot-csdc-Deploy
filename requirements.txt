@@ -1,7 +1,8 @@
 python-telegram-bot==20.8
 mysql-connector-python
 python-dotenv
-openai
+openai==1.6.1
 streamlit
 pandas
 plotly
+pytz
