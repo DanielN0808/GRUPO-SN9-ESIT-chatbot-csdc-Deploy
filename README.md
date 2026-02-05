@@ -59,12 +59,12 @@ Integración Cloud — Equipo completo
 Estado del proyecto
 
 Fase 0 – Onboarding y Planificación            COMPLETADA
-Fase 1 – Análisis                              EN CURSO
+Fase 1 – Análisis                              COMPLETADA
   * Casos de uso definidos
   * Intenciones iniciales identificadas
   * Arquitectura en diseño
-FASE 2 - Diseño de Flujos Conversacionales     PENDIENTE
-FASE 3 - Implementación, Pruebas y Refinaiento PENDIENTE 
+FASE 2 - Diseño de Flujos Conversacionales     COMPLETADA
+FASE 3 - Implementación, Pruebas y Refinaiento EN PROCESO
 FASE 4 - Cierre, Documentación y Entrega       PENDIENTE
 
 Ejecución local (referencial)
