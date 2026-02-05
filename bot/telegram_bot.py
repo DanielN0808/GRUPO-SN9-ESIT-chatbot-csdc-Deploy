@@ -59,11 +59,6 @@ def confirm_menu():
         [InlineKeyboardButton("⬅️ Corregir / Atrás", callback_data="flow_back")],
         [InlineKeyboardButton("❌ Cancelar", callback_data="flow_cancel")],
     ])
-def yes_no_menu():
-    return InlineKeyboardMarkup([
-        [InlineKeyboardButton("✅ Sí", callback_data="otra_si")],
-        [InlineKeyboardButton("❌ No", callback_data="otra_no")]
-    ])
 
 # -------------------------------------------------------
 # START
@@ -102,38 +97,16 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # 2. Confirmar y Guardar (Paso final)
     if data == "flow_confirm":
         success = confirm_and_save(user_id)
-    if success:
-        await query.message.edit_text(
-            "✅ *¡Solicitud Enviada con Éxito!*\n\n"
-            "¿Deseas realizar otra solicitud?",
-            parse_mode="Markdown",
-            reply_markup=yes_no_menu()
-        )
-    else:
-        await query.message.reply_text(
-            "⚠️ Hubo un error guardando la solicitud. Intenta de nuevo."
-        )
-    return
-# -------------------------------------------------------
-# 2.1 ¿Otra solicitud?
-# -------------------------------------------------------
-    if data == "otra_si":
-     await query.message.edit_text(
-        "Perfecto 👍 ¿Qué deseas hacer ahora?",
-        reply_markup=main_menu()
-    )
-    return
-
-    if data == "otra_no":
-     await query.message.edit_text(
-        "🙏 *Gracias por utilizar nuestros servicios.*\n\n"
-        "Cuando necesites ayuda, aquí estaré.",
-        parse_mode="Markdown"
-    )
-    return
-    
-
-
+        if success:
+            await query.message.edit_text(
+                "✅ *¡Solicitud Enviada con Éxito!*\n\n"
+                "Hemos recibido tu información. Recibirás una notificación en tu correo institucional pronto.",
+                parse_mode="Markdown"
+            )
+            await query.message.reply_text("¿Deseas realizar otra gestión?", reply_markup=main_menu())
+        else:
+            await query.message.reply_text("⚠️ Hubo un error guardando la solicitud. Intenta de nuevo.")
+        return
 
     # 3. Retroceder (Atrás)
     if data == "flow_back":
