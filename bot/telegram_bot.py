@@ -59,6 +59,13 @@ def confirm_menu():
         [InlineKeyboardButton("⬅️ Corregir / Atrás", callback_data="flow_back")],
         [InlineKeyboardButton("❌ Cancelar", callback_data="flow_cancel")],
     ])
+def otra_gestion_menu():
+    return InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton("✅ Sí", callback_data="otra_si"),
+            InlineKeyboardButton("❌ No", callback_data="otra_no"),
+        ]
+    ])
 
 # -------------------------------------------------------
 # START
@@ -91,7 +98,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if data == "flow_cancel":
         cancel_request_flow(user_id)
         await query.message.edit_text("❌ *Solicitud cancelada.*", parse_mode="Markdown")
-        await query.message.reply_text("¿Te puedo ayudar en algo más?", reply_markup=main_menu())
+        await query.message.reply_text("¿Te puedo ayudar en algo más?", reply_markup=otra_gestion_menu())
         return
 
     # 2. Confirmar y Guardar (Paso final)
@@ -103,7 +110,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "Hemos recibido tu información. Recibirás una notificación en tu correo institucional pronto.",
                 parse_mode="Markdown"
             )
-            await query.message.reply_text("¿Deseas realizar otra gestión?", reply_markup=main_menu())
+            await query.message.reply_text("¿Deseas realizar otra gestión?", reply_markup=otra_gestion_menu())
         else:
             await query.message.reply_text("⚠️ Hubo un error guardando la solicitud. Intenta de nuevo.")
         return
@@ -121,6 +128,16 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
              await query.message.reply_text("📂 Selecciona el *tipo de solicitud*:", reply_markup=solicitud_menu(), parse_mode="Markdown")
         elif new_step == 4:
              await query.message.reply_text("✍️ Describe brevemente tu *solicitud o detalle*:", reply_markup=nav_keyboard(), parse_mode="Markdown")
+        return
+    
+    # 👉 AQUÍ VA EL PASO 4
+        if data == "otra_si":
+             await query.message.reply_text("Perfecto 👍 ¿Qué deseas hacer ahora?",reply_markup=main_menu())
+        return
+    
+    # 👉 AQUÍ VA EL PASO 5
+        if data == "otra_no":
+             await query.message.edit_text("🙏 *Gracias por utilizar nuestros servicios.*\n\n""Te esperamos pronto 😊",parse_mode="Markdown")
         return
 
     # --- OPCIONES DEL MENÚ PRINCIPAL ---
