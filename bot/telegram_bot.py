@@ -130,14 +130,14 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
              await query.message.reply_text("✍️ Describe brevemente tu *solicitud o detalle*:", reply_markup=nav_keyboard(), parse_mode="Markdown")
         return
     
-    # 👉 AQUÍ VA EL PASO 4
-        if data == "otra_si":
-             await query.message.reply_text("Perfecto 👍 ¿Qué deseas hacer ahora?",reply_markup=main_menu())
+    # 4. Paso 4
+    if data == "otra_si":
+        await query.message.reply_text("Perfecto 👍 ¿Qué deseas hacer ahora?",reply_markup=main_menu())
         return
     
-    # 👉 AQUÍ VA EL PASO 5
-        if data == "otra_no":
-             await query.message.edit_text("🙏 *Gracias por utilizar nuestros servicios.*\n\n""Te esperamos pronto 😊",parse_mode="Markdown")
+    # 5. Paso 5
+    if data == "otra_no":
+        await query.message.edit_text("🙏 *Gracias por utilizar nuestros servicios.*\n\n""Te esperamos pronto 😊",parse_mode="Markdown")
         return
 
     # --- OPCIONES DEL MENÚ PRINCIPAL ---
