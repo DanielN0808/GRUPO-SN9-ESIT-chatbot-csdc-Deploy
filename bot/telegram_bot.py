@@ -263,9 +263,8 @@ def start_bot():
     app.run_webhook(
         listen="0.0.0.0",
         port=int(os.environ.get("PORT", 8000)),
-        url_path=token,
-        webhook_url=f"{webhook_url}/{token}",
+        webhook_url=f"{webhook_url}/{token}"
     )
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     start_bot()
