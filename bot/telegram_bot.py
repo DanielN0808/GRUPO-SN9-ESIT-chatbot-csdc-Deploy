@@ -250,11 +250,19 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # -------------------------------------------------------
 def start_bot():
     token = os.getenv("TELEGRAM_TOKEN")
+    webhook_url = os.getenv("WEBHOOK_URL")
+
     app = ApplicationBuilder().token(token).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(button_handler))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
-    print("🤖 CSDC Assistant actualizado y corriendo...")
-    app.run_polling()
+    print("🤖 CSDC Assistant corriendo en modo Webhook...")
+
+    app.run_webhook(
+        listen="0.0.0.0",
+        port=int(os.environ.get("PORT", 8000)),
+        url_path=token,
+        webhook_url=f"{webhook_url}/{token}",
+    )
