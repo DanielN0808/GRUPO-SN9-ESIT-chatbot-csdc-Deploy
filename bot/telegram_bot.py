@@ -266,3 +266,6 @@ def start_bot():
         url_path=token,
         webhook_url=f"{webhook_url}/{token}",
     )
+
+if _name_ == "_main_":
+    start_bot()
